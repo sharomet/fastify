@@ -1,0 +1,29 @@
+{
+  "name": "project1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "yarn watch | yarn nodemon",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodemon": "nodemon dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "fastify": "^1.13.4",
+    "http": "0.0.0",
+    "path": "^0.12.7",
+    "serve-static": "^1.13.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@types/body-parser": "^1.17.0",
+    "@types/serve-static": "^1.13.2"
+  }
+}
