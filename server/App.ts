@@ -1,5 +1,4 @@
 import fastify from 'fastify'
-import bodyParser from 'body-parser'
 import path from 'path'
 import serveStatic from 'serve-static'
 
@@ -18,9 +17,26 @@ class App {
     }
 
     private config() {
-        this.app.use(bodyParser.json());
+
+        /*this.app.addContentTypeParser('*', function (req, done) {
+            var data = ''
+            req.on('data', chunk => { data += chunk })
+            req.on('end', () => {
+                done(null, data)
+            })
+        })*/
+        /*this.app.addContentTypeParser('application/json', { parseAs: 'string' }, function (req, body, done) {
+            try {
+                var json = JSON.parse(body)
+                done(null, json)
+            } catch (err) {
+                err.statusCode = 400
+                done(err, undefined)
+            }
+        })*/
         this.app.use(serveStatic(path.join(__dirname, this.pathToClient)));
     }
+
 }
 
 export default new App().app;
