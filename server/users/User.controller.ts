@@ -5,7 +5,7 @@ interface Users {
     name: string
 }
 
-export class HomeController {
+export class UserController {
 
     public index(req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
         let users = [

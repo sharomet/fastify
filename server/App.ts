@@ -2,7 +2,7 @@ import fastify from 'fastify'
 import path from 'path'
 import serveStatic from 'serve-static'
 
-import { Router } from './routes/Routes'
+import { Router } from './Router'
 
 class App {
     
