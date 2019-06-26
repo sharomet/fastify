@@ -8,7 +8,7 @@ class App {
     
     public app: any;
     public router = new Router();
-    public pathToClient = '../public/';
+    public pathToClient = '../public/dist/';
 
     constructor() {
         this.app = fastify({logger: true});
@@ -17,7 +17,6 @@ class App {
     }
 
     private config() {
-
         /*this.app.addContentTypeParser('*', function (req, done) {
             var data = ''
             req.on('data', chunk => { data += chunk })

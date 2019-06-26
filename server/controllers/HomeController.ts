@@ -8,15 +8,13 @@ interface Users {
 export class HomeController {
 
     public index(req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
-        //reply.send({ hello: 'Home Controller' });
-        let users = ["name", "Test"];
-        
-        reply
-        .code(200)
-        .header('Content-Type', 'application/json; charset=utf-8')
-        .send(users)
+        let users = [
+            {"id": 1, "name": "Alexander"},
+            {"id": 2, "name": "John"},
+            {"id": 3, "name": "Michel"}
+        ];
+        reply.send(users)
     }
-
 
     public setUsers(req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
         reply

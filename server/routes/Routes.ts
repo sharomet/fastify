@@ -9,16 +9,8 @@ export class Router {
     private homeController: HomeController = new HomeController();
 
     public routes(app: any) {
-
-        app.get(this.apiUrl, (req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>)=> this.homeController.index(req, reply))
-
+        app.get(this.apiUrl, (req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) => this.homeController.index(req, reply))
+        app.get(this.apiUrl + 'users', (req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) => this.homeController.index(req, reply))
         app.post(this.apiUrl + 'users', (req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) => this.homeController.setUsers(req, reply))
-        /*app.post(this.apiUrl + 'users', (req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) => {
-            reply
-            .code(200)
-            .header('Content-Type', 'application/json; charset=utf-8')
-            .send(req.body);
-        })*/
     }
-
 }
