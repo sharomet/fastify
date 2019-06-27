@@ -1,20 +1,24 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { ServerResponse, IncomingMessage } from 'http'
 
-interface Users {
-    name: string
-}
+import { IUser } from './User'
+import { UserService } from './User.service'
 
 export class UserController {
 
+    private users: IUser[];
+
     public index(req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
-        let users = [
-            {"id": 1, "name": "Alexander"},
-            {"id": 2, "name": "John"},
-            {"id": 3, "name": "Michel"}
-        ];
+        const userService = new UserService()
+
         reply.header('Content-Type', 'application/json').code(200)
-        reply.send(users)
+
+        userService.getAllUsers()
+                   .then(users => {
+                        this.users = users
+                        reply.send(this.users)
+                    })
+                   .catch(err => console.log(err))
     }
 
     public setUsers(req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {

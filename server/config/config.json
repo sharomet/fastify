@@ -1,3 +1,10 @@
 {
-    "serverPort": "3100"
+    "serverPort": "3100",
+    "pathToClient": "../public/dist/",
+    "apiUrl": "/api",
+    "db": {
+        "name": "fastify",
+        "host": "localhost",
+        "port": 27017
+    }
 }

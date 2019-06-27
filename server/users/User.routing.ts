@@ -1,11 +1,17 @@
 import { UserController } from './User.controller'
+import config from '../config/config.json'
+import { User } from './User'
 
 export class UserRouting {
 
+    user: User = {
+        name: 'Alex',
+        email: 'test@mail.com'
+    }
+
     public initRouting(app: any, opts: any, next: any) {
-        const apiUrl: string = '/api';
         const userController = new UserController()
-        const optst = {
+        const opt = {
             schema: {
                 response: {
                     200: {
@@ -17,8 +23,8 @@ export class UserRouting {
                 }
             }
         }
-        app.post(apiUrl + '/users', optst, userController.setUsers)
-        app.get(apiUrl + '/users', userController.index)
+        app.post(`${config.apiUrl}/users`, opt, userController.setUsers)
+        app.get(`${config.apiUrl}/users`, userController.index)
         next()
     }
 

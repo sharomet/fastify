@@ -2,13 +2,14 @@ import fastify from 'fastify'
 import path from 'path'
 import serveStatic from 'serve-static'
 
-import { Router } from './Router'
+import config from './config/config.json'
+import { Routes } from './Routes'
+import { DataBase } from './config/DataBase'
 
 class App {
     
     public app: any;
-    public router = new Router();
-    public pathToClient = '../public/dist/';
+    private router = new Routes();
 
     constructor() {
         this.app = fastify({logger: true});
@@ -17,6 +18,7 @@ class App {
     }
 
     private config() {
+        new DataBase()
         /*this.app.addContentTypeParser('*', function (req, done) {
             var data = ''
             req.on('data', chunk => { data += chunk })
@@ -33,7 +35,7 @@ class App {
                 done(err, undefined)
             }
         })*/
-        this.app.use(serveStatic(path.join(__dirname, this.pathToClient)));
+        this.app.use(serveStatic(path.join(__dirname, config.pathToClient)));
     }
 
 }
