@@ -7,6 +7,8 @@ import { UserService } from './User.service'
 export class UserController {
 
     private users: IUser[];
+    
+    //constructor(private userService: UserService){}
 
     public index(req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
         const userService = new UserService()
@@ -22,10 +24,10 @@ export class UserController {
     }
 
     public setUsers(req: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) {
-        reply
-        .code(200)
-        .header('Content-Type', 'application/json; charset=utf-8')
-        .send(req.body)
+        const userService = new UserService()
+        userService.addUser(req.body)
+                    .then(res => reply.header('Content-Type', 'application/json; charset=utf-8').send(res))
+                    .catch(err => console.log(err))
     }
 
 }

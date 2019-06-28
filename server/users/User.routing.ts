@@ -1,13 +1,13 @@
 import { UserController } from './User.controller'
 import config from '../config/config.json'
-import { User } from './User'
+import { IUser } from './User'
 
 export class UserRouting {
 
-    user: User = {
+    /*user: IUser = {
         name: 'Alex',
         email: 'test@mail.com'
-    }
+    }*/
 
     public initRouting(app: any, opts: any, next: any) {
         const userController = new UserController()
@@ -17,7 +17,9 @@ export class UserRouting {
                     200: {
                         type: 'object',
                         properties: {
-                            name: { type: 'string' }
+                            name: { type: 'string' },
+                            email: { type: 'string' },
+                            password: { type: 'string' }
                         }
                     }
                 }
