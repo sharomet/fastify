@@ -1,17 +1,13 @@
+import fastify from 'fastify'
+
 import { UserController } from './User.controller'
 import config from '../config/config.json'
-import { IUser } from './User'
 
 export class UserRouting {
-
-    /*user: IUser = {
-        name: 'Alex',
-        email: 'test@mail.com'
-    }*/
-
+    
     public initRouting(app: any, opts: any, next: any) {
         const userController = new UserController()
-        const opt = {
+        const opt: fastify.RouteShorthandOptions = {
             schema: {
                 response: {
                     200: {
